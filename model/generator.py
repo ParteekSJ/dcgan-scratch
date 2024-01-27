@@ -27,7 +27,7 @@ class Generator(nn.Module):
                 input_channels=z_dim,
                 output_channels=num_gen_filter * 4,
                 kernel_size=4,
-                stride=1,
+                stride=2,
                 padding=0,
             ),  # [B, 100, 1, 1] -> [B, 256, 4, 4]
             self._generator_block(
