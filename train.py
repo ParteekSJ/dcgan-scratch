@@ -96,8 +96,12 @@ if __name__ == "__main__":
         }  # save state dictionary
         torch.save(checkpoint, f"{checkpoint_dir}/model.pth")
 
-        G_LOSSES.append(sum(generator_losses[:]) / len(dataloader))
-        D_LOSSES.append(sum(discriminator_losses[:]) / len(dataloader))
+        gen_epoch_loss = sum(generator_losses[:]) / len(dataloader)
+        dsc_epoch_loss = sum(discriminator_losses[:]) / len(dataloader)
+
+        logger.info(f"Epoch: {epoch} | G_Loss: {gen_epoch_loss} | D_Loss: {dsc_epoch_loss}")
+        G_LOSSES.append(gen_epoch_loss)
+        D_LOSSES.append(dsc_epoch_loss)
 
         show_tensor_images(fake, show=False, plot_name=f"{image_dir}/epoch-{epoch}-fake.png")
         show_tensor_images(images, show=False, plot_name=f"{image_dir}/epoch-{epoch}-real.png")

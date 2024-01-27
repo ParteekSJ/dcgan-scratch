@@ -27,3 +27,5 @@ Z_DIM = 64
 CRITERION = torch.nn.BCEWithLogitsLoss()
 D_LR, G_LR = 2e-4, 2e-4
 DISPLAY_STEP = 10
+PRETRAINED_PATH = "./checkpoints/model.pth"
+IMG_SIZE = (1, 28, 28)
